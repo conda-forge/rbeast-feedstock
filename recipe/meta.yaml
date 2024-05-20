@@ -12,11 +12,12 @@ source:
 build:
   skip: true  # [py<37 or win]
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
   host:
     - python
@@ -27,7 +28,6 @@ requirements:
   run:
     - python
     - matplotlib-base >=2.2.0
-    - {{ pin_compatible('numpy') }}
 
 test:
   imports:
